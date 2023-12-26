@@ -19,9 +19,12 @@ Key Features:
    c. Impurity Based (IM)
    d. One Action at One Time (OA-OT)
 
-5. Four different real XSS datasets were used for evaluating the DQN-MAFS these datasets are publically available:
+5. Four different real XSS datasets were used for evaluating the effectiveness of the DQN-MAFS model and its FARD-DFS sub-models. these datasets are publically available:
    https://github.com/fawaz2015/XSS-dataset
    https://github.com/IramTariq/XSS-attack-detection/tree/master/Testing_Data
+
+
+
 
 **please consider citing the corresponding publication. 
 Kareem Thajeel, I., Samsudin, K., Jahari Hashim, S., & Hashim, F. (2023). Dynamic feature selection model for adaptive cross site scripting attack detection using developed multi-agent deep Q learning model. Journal of King Saud University - Computer and Information Sciences, 35(6), 101490. https://doi.org/10.1016/j.jksuci.2023.01.012**
