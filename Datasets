@@ -1,1 +1,298 @@
+In this project, we leverage four Secondary XSS attack datasets to demonstrate the effectiveness of our proposed approach across varying dimensions. The detailed descriptions are provided below:
+
+1. Datasets of (Mokbal et al., 2019) and (Mokbal et al., 2021):
+D1-66, initially published by Mokbal et al. in 2019 and updated in 2021, serves as the first comprehensive cross-site scripting-based numerical features dataset. The dataset comprises benign samples 
+crawled from the top 50,000 Alexa-ranked websites and malicious samples from raw XSS repositories such as XSSed and Open Bug Bounty. Initially containing 66 numerical features, the dataset was later 
+expanded by Mokbal et al. in 2021 to include 167 numerical features. The datasets are available on GitHub and encompass three types of features: HTML, JavaScript, and URL.
+
+2. Dataset of (Zhou & Wang, 2019):
+D3-30, curated by Zhou & Wang in 2019, was gathered from various GitHub sources and security forums. This dataset includes approximately 6,503 normal records and 3,497 XSS payloads. The dataset focuses 
+on 30 script and URL context features obtained through open-source ontology modeling tools (Protégé) based on four characteristics.
+
+3. Dataset of (Y. Fang et al., 2018):
+D4-30, utilized in this study, was originally collected by Y. Fang et al. in 2018 from diverse sources, including GitHub and XSSed. Features were extracted directly from XSS payloads by Tariq et al. in 2021,
+following the approach outlined by Zhou & Wang in 2019. Similar to D3-30, this dataset encompasses 30 features extracted using the JSoup parser library. Both D3-30 and D4-30 datasets are available online.
+These datasets collectively contribute to our assessment of dynamic feature selection in XSS detection, covering scenarios with varying feature dimensions and real-world XSS attack characteristics.
+
+First and second datasets are available online: https://github.com/fawaz2015/XSS-dataset
+Third and forth datasets are available online : https://github.com/IramTariq/XSS-attack-detection/tree/master/Testing_Data
+
+The above datasets: Features wase extracted by using a statistical-based feature extraction methods to locate key elements of malicious XSS payloads using three mechanisms for feature representation with statistical form. 
+These mechanisms are depends on the appearance of a certain feature or keyword within the XSS sample. Also, they are  based on the frequency of features appearing in the given XSS samples in the dataset.
+
+Features names of ((Mokbal et al., 2019))  dataset: 
+No.	Feature name
+1	url_length
+2	url_special_characters
+3	url_tag_script
+4	url_attr_action
+5	url_attr_src
+6	url_event_onerror
+7	url_event_onmouseover
+8	url_cookie
+9	url_number_keywords_param
+10	url_number_domain
+11	url_number_ip
+12	html_tag_script
+13	html_tag_iframe
+14	html_tag_meta
+15	html_tag_object
+16	html_tag_embed
+17	html_tag_link
+18	html_tag_svg
+19	html_tag_frame
+20	html_tag_form
+21	html_tag_div
+22	html_tag_style
+23	html_tag_img
+24	html_tag_input
+25	html_tag_textarea
+26	html_attr_action
+27	html_attr_background
+28	html_attr_codebase
+29	html_attr_data
+30	html_attr_href
+31	html_attr_longdesc
+32	html_attr_src
+33	html_attr_usemap
+34	html_attr_http-equiv
+35	html_event_onblur
+36	html_event_onchange
+37	html_event_onclick
+38	html_event_onerror
+39	html_event_onfocus
+40	html_event_onkeydown
+41	html_event_onkeypress
+42	html_event_onkeyup
+43	html_event_onload
+44	html_event_onmousedown
+45	html_event_onmouseout
+46	html_event_onmouseup
+47	html_event_onresize
+48	html_event_onsubmit
+49	html_number_keywords_evil
+50	js_file
+51	js_pseudo_protocol
+52	js_dom_location
+53	js_dom_document
+54	js_prop_cookie
+55	js_prop_referrer
+56	js_method_write
+57	js_method_getElementsByTagName
+58	js_method_getElementById
+59	js_method_alert
+60	js_method_eval
+61	js_method_fromCharCode
+62	js_method_confirm
+63	js_min_define_function
+64	js_min_function_calls	
+65	js_string_max_length
+66	html_length
+
+Features names of  (Mokbal et al., 2021) dataset: 
+
+No.	Feature name
+1	url_length
+2	url_duplicated_characters
+3	url_special_characters
+4	url_tag_script
+5	url_tag_iframe
+6	url_tag_meta
+7	url_tag_applet
+8	url_tag_object
+9	url_tag_embed
+10	url_tag_link
+11	url_tag_svg
+12	url_tag_frame
+13	url_tag_form
+14	url_tag_div
+15	url_tag_style
+16	url_tag_video
+17	url_tag_img
+18	url_tag_input
+19	url_tag_textarea
+20	url_attr_action
+21	url_attr_archive
+22	url_attr_background
+23	url_attr_classid
+24	url_attr_codebase
+25	url_attr_data
+26	url_attr_formaction
+27	url_attr_href
+28	url_attr_longdesc
+29	url_attr_poster
+30	url_attr_profile
+31	url_attr_src
+32	url_attr_http-equiv
+33	url_event_onblur
+34	url_event_onclick
+35	url_event_onerror
+36	url_event_onfocus
+37	url_event_onload'
+38	url_event_onmousemove
+39	url_event_onmouseout
+40	url_event_onmouseover
+41	url_event_onsearch
+42	url_event_onsubmit
+43	url_event_onunload
+44	url_cookie
+45	url_redirection
+46	url_number_keywords_param
+47	url_number_keywords_evil
+48	url_number_domain
+49	url_number_ip
+50	html_tag_script
+51	html_tag_iframe
+52	html_tag_meta
+53	html_tag_applet
+54	html_tag_object	
+55	html_tag_embed
+56	html_tag_link
+57	html_tag_svg
+58	html_tag_frame
+59	html_tag_form
+60	html_tag_div
+61	html_tag_style
+62	html_tag_video
+63	html_tag_img
+64	html_tag_input
+65	html_tag_textarea
+66	html_attr_action
+67	html_attr_archive
+68	html_attr_background
+69	html_attr_cite
+70	html_attr_classid
+71	html_attr_codebase
+72	html_attr_data
+73	html_attr_dsync
+74	html_attr_formaction'
+75	html_attr_href
+76	html_attr_icon
+77	html_attr_longdesc
+78	html_attr_manifest
+79	html_attr_poster
+80	html_attr_profile
+81	html_attr_src
+82	html_attr_usemap
+83	html_attr_http-equiv
+84	html_attr_lowsrc
+85	html_event_onabort
+86	html_event_onactivate
+87	html_event_onafterprint
+88	html_event_onafterupdate
+89	html_event_onbeforeactivate
+90	html_event_onbeforecopy
+91	html_event_onbeforecut
+92	html_event_onbeforedeactivate
+93	html_event_onbeforeeditfocus
+94	html_event_onbeforepaste
+95	html_event_onbeforeprint
+96	html_event_onbeforeunload
+97	html_event_onblur
+98	html_event_onchange
+99	html_event_onclick
+100	html_event_oncontextmenu
+101	html_event_oncopy
+102	html_event_oncut
+103	html_event_ondatasetcomplete
+104	html_event_ondblclick
+105	html_event_ondeactivate
+106	html_event_ondrag
+107	html_event_ondragend
+108	html_event_ondragenter
+109	html_event_ondragleave
+110	html_event_ondragover
+111	html_event_ondragstart
+112	html_event_ondrop
+113	html_event_onerror
+114	html_event_onfocus
+115	html_event_onfocusin
+116	html_event_onfocusout
+117	html_event_onhashchange
+118	html_event_onhelp
+119	html_event_oninput
+120	html_event_onkeydown
+121	html_event_onkeypress
+122	html_event_onkeyup
+123	html_event_onload
+124	html_event_onmousedown
+125	html_event_onmouseenter
+126	html_event_onmouseleave
+127	html_event_onmousemove
+128	html_event_onmouseout
+129	html_event_onmouseover
+130	html_event_onmouseup
+131	html_event_onmousewheel
+132	html_event_onpaste
+133	html_event_onpropertychange
+134	html_event_onreadystatechange
+135	html_event_onreset
+136	html_event_onresize
+137	html_event_onresizestart
+138	html_event_onscroll
+139	html_event_onsearch
+140	html_event_onselect
+141	html_event_onselectstart
+142	html_event_onstart
+143	html_event_onsubmit
+144	html_event_onunload
+145	html_number_keywords_evil
+146	js_file
+147	js_pseudo_protocol
+148	js_dom_windows
+149	js_dom_location
+150	js_dom_document
+151	js_prop_cookie
+152	js_prop_document
+153	js_prop_referrer
+154	js_method_write
+155	js_method_getElementsByTagName
+156	js_method_getElementById
+157	js_method_alert
+158	js_method_eval
+159	js_method_fromCharCode
+160	js_method_prompt
+161	js_method_confirm
+162	js_method_fetch
+163	js_min_length
+164	js_min_define_function
+165	js_min_function_calls
+166	js_string_max_length
+167	html_length
+
+
+Features names of (Y. Fang et al., 2018) and (Zhou & Wang, 2019)
+No.	Feature name
+1	Length of input
+2	Number of alert
+3	Number of script
+4	Number of onerror
+5	Number of confirm 
+6	Number of img
+7	Number of onload
+8	Number of eval
+9	Number of prompt
+10	Number of src
+11	Number of href
+12	Number of javascript
+13	Number of window
+14	Number of fromcharcode
+15	Number of document
+16	Number of onmouseover
+17	Number of cookie
+18	Number of domain
+19	Number of onfocus
+20	Number of expression
+21	Number of iframe
+22	Number of onclick
+23	Number of single quote mark
+24	Number of double quote mark
+25	Number of left angle bracket
+26	Number of right-angle bracket
+27	Number of backslant
+28	Number of coma
+29	Number of plus
+30	Number of http://, https://, file://
+
+
 
